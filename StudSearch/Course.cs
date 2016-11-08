@@ -103,7 +103,7 @@ namespace StudSearch
         /// <see cref="CourseArgs"/>
         public void Deserializer(CourseArgs data)
         {
-            this.id = string.Format("{0}-{1}", data.DepartmentName, data.CourseNumber);
+            this.id = data.CourseID.ToString();
             this.name = data.CourseDescription;
             this.number = data.CourseNumber.ToString();
             this.courseType = data.CourseType;

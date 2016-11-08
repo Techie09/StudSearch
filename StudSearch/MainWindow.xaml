@@ -8,8 +8,8 @@
         Title="MainWindow" Height="350" Width="525">
     <Grid RenderTransformOrigin="0.989,0.02">
         <TextBox x:Name="tbSearch" HorizontalAlignment="Left" Height="23" Margin="14,25,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <Button x:Name="btnConfirm" Content="Search" HorizontalAlignment="Left" Margin="139,25,0,0" VerticalAlignment="Top" Width="46" Height="23" RenderTransformOrigin="1,2.056"/>
-        <ListBox x:Name="lbStudents" HorizontalAlignment="Left" Height="112" Margin="199,18,0,0" VerticalAlignment="Top" Width="301"/>
+        <Button x:Name="btnConfirm" Content="Search" HorizontalAlignment="Left" Margin="139,25,0,0" VerticalAlignment="Top" Width="46" Height="23" RenderTransformOrigin="1,2.056" Click="btnConfirm_Click"/>
+        <ListBox x:Name="lbStudents" HorizontalAlignment="Left" Height="112" Margin="199,18,0,0" VerticalAlignment="Top" Width="301" MouseDoubleClick="lbStudents_MouseDoubleClick"/>
         <Label x:Name="lblFname" Content="First Name" HorizontalAlignment="Left" Margin="24,83,0,0" VerticalAlignment="Top" Width="110" Height="24" FontSize="9"/>
         <Label x:Name="lblLname" Content="Last Name" HorizontalAlignment="Left" Margin="24,98,0,0" VerticalAlignment="Top" FontSize="9"/>
         <Label x:Name="lblID" Content="ID" HorizontalAlignment="Left" Margin="24,115,0,0" VerticalAlignment="Top" FontSize="9"/>

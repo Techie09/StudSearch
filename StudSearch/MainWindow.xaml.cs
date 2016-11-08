@@ -24,5 +24,40 @@ namespace StudSearch
         {
             InitializeComponent();
         }
+
+        private void btnConfirm_Click(object sender, RoutedEventArgs e)
+        {
+            lbStudents.Items.Clear();
+
+            List<Student> students = Students.SearchStudentsGeneral(tbSearch.Text);
+            foreach (Student student in students)
+            {
+                string fullName = student.lastName + ", " + student.firstName + " ID: " + student.id; 
+                lbStudents.Items.Add(fullName);
+            }
+
+            
+        }
+
+        private void lbStudents_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            string selection = lbStudents.SelectedItem.ToString();
+            string[] substrings = selection.Split(' ');
+            string ID = substrings[3];
+            Student student = Student.GetStudentById(ID);
+
+            lblFname.Content = student.firstName;
+            lblLname.Content = student.lastName;
+            lblID.Content = student.id;
+
+            lbCourses.Items.Clear();
+
+            List<EnrolledCourse> courses = student.courses;
+            foreach(EnrolledCourse course in courses)
+            {
+                Course c = new Course(ObjectCache.CourseRootList.FirstOrDefault(cs => cs.CourseNumber == course.courseID));
+                lbCourses.Items.Add(c.name);
+            }
+        }
     }
 }

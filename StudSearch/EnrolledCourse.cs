@@ -38,6 +38,15 @@ namespace StudSearch
             set { m_courseID = value; }
         }
 
+
+        public static string CourseNumber = "Course Number";
+        private int m_courseNumber;
+        public int courseNumber
+        {
+            get { return m_courseNumber; }
+            set { m_courseNumber = value; }
+        }
+
         /// <summary>
         /// represents the <see cref="string"/> "Semester"
         /// </summary>
@@ -89,11 +98,12 @@ namespace StudSearch
         /// <param name="args"></param>
         public EnrolledCourse(EnrolledCourseArgs args)
         {
-            var cArgs = ObjectCache.CourseRootList.FirstOrDefault(c => c.CourseNumber == args.CourseID);
+            var cArgs = ObjectCache.CourseRootList.FirstOrDefault(c => c.CourseID == args.CourseID);
             if (cArgs == null)
                 return;
             info = new Course(cArgs);
             courseID = args.CourseID;
+            courseNumber = args.CourseNumber;
             semester = (SemesterType)args.Semester;
             year = args.Year;
             semester = ParseSemester("spring");
