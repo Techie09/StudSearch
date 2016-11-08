@@ -55,7 +55,7 @@ namespace StudSearch
             List<EnrolledCourse> courses = student.courses;
             foreach(EnrolledCourse course in courses)
             {
-                Course c = new Course(ObjectCache.CourseRootList.FirstOrDefault(cs => cs.CourseNumber == course.courseID));
+                Course c = new Course(ObjectCache.CourseRootList.FirstOrDefault(cs => cs.CourseID == course.courseID));
                 lbCourses.Items.Add(c.name);
             }
         }
