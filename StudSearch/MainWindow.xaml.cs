@@ -92,7 +92,6 @@ namespace StudSearch
             double electiveCompletion = 0;
             double genEdCompletion = 0;
             double totCompletion = 0;
-            int creditHours = 0;
 
             var electives = from course in courses
                             where course.info.courseType == "Elective"

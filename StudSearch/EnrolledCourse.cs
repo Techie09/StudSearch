@@ -106,23 +106,11 @@ namespace StudSearch
             courseNumber = args.CourseNumber;
             semester = (SemesterType)args.Semester;
             year = args.Year;
-            semester = ParseSemester("spring");
+            grade = (LetterGrade)args.Grade;
+
         }
 
-        /// <summary>
-        /// determines which <see cref="SemesterType"/> base on the semesterName 
-        /// </summary>
-        /// <param name="semesterName">only valid options: Fall(default), Spring, Summer </param>
-        /// <returns>returns SemesterType based on semesterName. defaults to Fall</returns>
-        /// <remarks>needs finished</remarks>
-        public SemesterType ParseSemester(string semesterName)
-        {
-            var semesterType = SemesterType.FALL;
 
-            var name = Enum.GetName(typeof(SemesterType), SemesterType.FALL);
-
-            return semesterType;
-        }
         #endregion
     }
 
@@ -158,37 +146,37 @@ namespace StudSearch
         /// represents letter grade A
         /// </summary>
         [Description("A")]
-        A,
+        A = 65,
         /// <summary>
         /// represents letter grade B
         /// </summary>
         [Description("B")]
-        B,
+        B = 66,
         /// <summary>
         /// represents letter grade C
         /// </summary>
         [Description("C")]
-        C,
+        C = 67,
         /// <summary>
         /// represents letter grade D
         /// </summary>
         [Description("D")]
-        D,
+        D = 68,
         /// <summary>
         /// represents letter grade F
         /// </summary>
         [Description("F")]
-        F,
+        F = 70,
         /// <summary>
         /// represents incomplete
         /// </summary>
         [Description("Incomplete")]
-        I,
+        I = 73,
         /// <summary>
         /// represents withdrown
         /// </summary>
         [Description("Withdraw")]
-        W
+        W = 87
     }
     #endregion
 }
