@@ -32,14 +32,14 @@
         <Label x:Name="_6" Content="Year:" HorizontalAlignment="Left" Margin="38,298,0,0" VerticalAlignment="Top" FontSize="11"/>
         <Label x:Name="_7" Content="Course Type:" HorizontalAlignment="Left" Margin="1,243,0,0" VerticalAlignment="Top" FontSize="11"/>
         <Label x:Name="_8" Content="Grade:" HorizontalAlignment="Left" Margin="29,344,0,0" VerticalAlignment="Top" FontSize="11"/>
-        <Label x:Name="label" Content="Core %:" HorizontalAlignment="Left" Margin="356,307,0,0" VerticalAlignment="Top" Height="27" Width="60" FontSize="14"/>
-        <Label x:Name="lblCore" Content="0" HorizontalAlignment="Left" Margin="416,307,0,0" VerticalAlignment="Top" Height="36" Width="45" FontSize="14" RenderTransformOrigin="0.644,0.5"/>
-        <Label x:Name="label_01" Content="Elective %:" HorizontalAlignment="Left" Margin="466,307,0,0" VerticalAlignment="Top" FontSize="14"/>
-        <Label x:Name="lblElective" Content="0" HorizontalAlignment="Left" Margin="541,307,0,0" VerticalAlignment="Top" FontSize="14" Width="28"/>
-        <Label x:Name="lblGenEd" Content="0" HorizontalAlignment="Left" Margin="643,305,0,0" VerticalAlignment="Top" FontSize="14" Width="26"/>
-        <Label x:Name="label_02" Content="Completion %:" HorizontalAlignment="Left" Margin="356,344,0,0" VerticalAlignment="Top" FontSize="18"/>
-        <Label x:Name="lblCompleted" Content="0" HorizontalAlignment="Left" Margin="487,344,0,0" VerticalAlignment="Top" FontSize="18" Width="46"/>
-        <Label x:Name="label1" Content="GenEd %:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="574,305,0,0" FontSize="14"/>
+        <Label x:Name="label" Content="Core %:" HorizontalAlignment="Left" Margin="325,305,0,0" VerticalAlignment="Top" Height="27" Width="60" FontSize="14"/>
+        <Label x:Name="lblCore" Content="0" HorizontalAlignment="Left" Margin="385,305,0,0" VerticalAlignment="Top" Height="36" Width="45" FontSize="14" RenderTransformOrigin="0.644,0.5"/>
+        <Label x:Name="label_01" Content="Elective %:" HorizontalAlignment="Left" Margin="430,305,0,0" VerticalAlignment="Top" FontSize="14"/>
+        <Label x:Name="lblElective" Content="0" HorizontalAlignment="Left" Margin="505,305,0,0" VerticalAlignment="Top" FontSize="14" Width="38"/>
+        <Label x:Name="lblGenEd" Content="0" HorizontalAlignment="Left" Margin="612,305,0,0" VerticalAlignment="Top" FontSize="14" Width="26"/>
+        <Label x:Name="label_02" Content="Degree Completion %:" HorizontalAlignment="Left" Margin="403,360,0,0" VerticalAlignment="Top" FontSize="18"/>
+        <Label x:Name="lblCompleted" Content="0" HorizontalAlignment="Left" Margin="592,360,0,0" VerticalAlignment="Top" FontSize="18" Width="46"/>
+        <Label x:Name="label1" Content="GenEd %:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="543,305,0,0" FontSize="14"/>
         <Label x:Name="label2" Content="First Name:" HorizontalAlignment="Left" Margin="18,91,0,0" VerticalAlignment="Top" FontSize="11"/>
         <Label x:Name="label2_Copy" Content="Last Name:" HorizontalAlignment="Left" Margin="19,108,0,0" VerticalAlignment="Top" FontSize="11"/>
         <Label x:Name="label2_Copy1" Content="Student ID:" HorizontalAlignment="Left" Margin="19,131,0,0" VerticalAlignment="Top" FontSize="11"/>

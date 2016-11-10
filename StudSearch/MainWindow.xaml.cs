@@ -42,6 +42,8 @@ namespace StudSearch
                 lbStudents.Items.Add("***No Students Records Found***");
             }
 
+            LabelClear();
+
         }
 
         void lbStudents_MouseDoubleClick(object sender, MouseButtonEventArgs e)
@@ -133,6 +135,25 @@ namespace StudSearch
 
             lblCompleted.Content = Math.Round(((totCompletion / 42) * 100), 2);
 
+        }
+
+        public void LabelClear()
+        {
+            lblCompleted.Content = "";
+            lblCore.Content = "";
+            lblCourseCred.Content = "";
+            lblCourseGrade.Content = "";
+            lblCourseId.Content = "";
+            lblCourseNam.Content = "";
+            lblCourseNum.Content = "";
+            lblCourseType.Content = "";
+            lblElective.Content = "";
+            lblFname.Content = "";
+            lblGenEd.Content = "";
+            lblID.Content = "";
+            lblLname.Content = "";
+            lblSemster.Content = "";
+            lblYear.Content = "";
         }
     }
 }
