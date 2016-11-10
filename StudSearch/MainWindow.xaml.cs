@@ -28,6 +28,7 @@ namespace StudSearch
         private void btnConfirm_Click(object sender, RoutedEventArgs e)
         {
             lbStudents.Items.Clear(); //Clear our student list box every time the search button is clicked.
+            lbCourses.Items.Clear();  //Clears courses list box upon making a new search
 
             List<Student> students = Students.SearchStudentsGeneral(tbSearch.Text);
             foreach (Student student in students)
@@ -36,7 +37,11 @@ namespace StudSearch
                 lbStudents.Items.Add(fullName);
             }
 
-            
+            if (students.Count == 0)
+            {
+                lbStudents.Items.Add("***No Students Records Found***");
+            }
+
         }
 
         void lbStudents_MouseDoubleClick(object sender, MouseButtonEventArgs e)
