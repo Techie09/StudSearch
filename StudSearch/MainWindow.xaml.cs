@@ -22,8 +22,7 @@ namespace StudSearch
     {
         public MainWindow()
         {
-            InitializeComponent();
-            
+            InitializeComponent();            
         }
 
         private void btnConfirm_Click(object sender, RoutedEventArgs e)
@@ -122,6 +121,7 @@ namespace StudSearch
             }
 
         }
+
         public void ComputeCompletion(List<EnrolledCourse> courses)
         {
             double coreCompletion = 0;
