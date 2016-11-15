@@ -24,5 +24,7 @@ namespace StudSearch
         /// represents the grade earned from taking the course
         /// </summary>
         public char Grade { get; set; }
+
+        public int CourseNumber { get; set; }
     }
 }

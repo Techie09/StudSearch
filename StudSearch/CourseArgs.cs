@@ -23,7 +23,7 @@ namespace StudSearch
         ///<summary>
         /// represents the unique course identifier
         ///</summary>
-        public string CourseID { get; set; }
+        public int CourseID { get; set; }
         /// <summary>
         /// represents the course level within a department
         /// </summary>
