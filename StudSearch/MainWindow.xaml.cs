@@ -111,7 +111,20 @@ namespace StudSearch
                             select course;
             foreach (EnrolledCourse course in electives)
             {
-                electiveCompletion++;
+                switch (course.grade)
+                {
+                    case LetterGrade.A:
+                        electiveCompletion++;
+                        break;
+                    case LetterGrade.B:
+                        electiveCompletion++;
+                        break;
+                    case LetterGrade.C:
+                        electiveCompletion++;
+                        break;
+                    default:
+                        break;
+                }
             }
 
             var core = from course in courses
@@ -120,7 +133,20 @@ namespace StudSearch
 
             foreach (EnrolledCourse course in core)
             {
-                coreCompletion++;
+                switch (course.grade)
+                    {
+                    case LetterGrade.A:
+                        coreCompletion++;
+                        break;
+                    case LetterGrade.B:
+                        coreCompletion++;
+                        break;
+                    case LetterGrade.C:
+                        coreCompletion++;
+                        break;
+                    default:
+                        break;
+                    }
             }
 
             var genEd = from course in courses
@@ -129,7 +155,20 @@ namespace StudSearch
 
             foreach (EnrolledCourse course in genEd)
             {
-                genEdCompletion++;
+                switch (course.grade)
+                {
+                    case LetterGrade.A:
+                        genEdCompletion++;
+                        break;
+                    case LetterGrade.B:
+                        genEdCompletion++;
+                        break;
+                    case LetterGrade.C:
+                        genEdCompletion++;
+                        break;
+                    default:
+                        break;
+                }
             }
 
             totCompletion = electiveCompletion + coreCompletion + genEdCompletion;
