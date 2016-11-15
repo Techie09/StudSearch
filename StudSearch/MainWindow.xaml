@@ -9,13 +9,13 @@
     <Grid RenderTransformOrigin="0.989,0.02" Background="#FF81A5D1">
         <TextBox x:Name="tbSearch" HorizontalAlignment="Left" Height="23" Margin="14,25,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <Button x:Name="btnConfirm" Content="Search" HorizontalAlignment="Left" Margin="139,25,0,0" VerticalAlignment="Top" Width="46" Height="23" RenderTransformOrigin="1,2.056" Click="btnConfirm_Click"/>
-        <ListBox x:Name="lbStudents" HorizontalAlignment="Left" Height="112" Margin="316,49,0,0" VerticalAlignment="Top" Width="327" MouseDoubleClick="lbStudents_MouseDoubleClick"/>
+        <ListBox x:Name="lbStudents" HorizontalAlignment="Left" Height="112" Margin="316,49,0,0" VerticalAlignment="Top" Width="327" SelectionMode="Single" MouseDoubleClick="lbStudents_MouseDoubleClick"/>
         <Label x:Name="lblFname" Content="First" HorizontalAlignment="Left" Margin="78,91,0,0" VerticalAlignment="Top" Width="110" Height="24" FontSize="11"/>
         <Label x:Name="lblLname" Content="Last" HorizontalAlignment="Left" Margin="78,108,0,0" VerticalAlignment="Top" FontSize="11"/>
         <Label x:Name="lblID" Content="ID" HorizontalAlignment="Left" Margin="79,131,0,0" VerticalAlignment="Top" FontSize="11"/>
         <Label x:Name="lblStudentHead" Content="Student Info Displayed Below" HorizontalAlignment="Left" Margin="1,65,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
         <Label x:Name="lblCourseHead" Content="Course Info Displayed Below" HorizontalAlignment="Left" Margin="0,157,0,0" VerticalAlignment="Top" RenderTransformOrigin="2.061,1.385" FontWeight="Bold"/>
-        <ListBox x:Name="lbCourses" HorizontalAlignment="Left" Height="100" Margin="316,192,0,0" VerticalAlignment="Top" Width="327" MouseDoubleClick="lbCourses_MouseDoubleClick"/>
+        <ListBox x:Name="lbCourses" HorizontalAlignment="Left" Height="100" Margin="316,192,0,0" VerticalAlignment="Top" Width="327" SelectionMode="Single" MouseDoubleClick="lbCourses_MouseDoubleClick"/>
         <Label x:Name="lblCourseNam" Content="Name" HorizontalAlignment="Left" Margin="73,188,0,0" VerticalAlignment="Top" FontSize="11"/>
         <Label x:Name="lblCourseCred" Content="Credits" HorizontalAlignment="Left" Margin="71,369,0,0" VerticalAlignment="Top" FontSize="11"/>
         <Label x:Name="lblSemster" Content="Semester" HorizontalAlignment="Left" Margin="73,273,0,0" VerticalAlignment="Top" FontSize="11"/>

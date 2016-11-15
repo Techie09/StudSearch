@@ -23,6 +23,7 @@ namespace StudSearch
         public MainWindow()
         {
             InitializeComponent();
+            
         }
 
         private void btnConfirm_Click(object sender, RoutedEventArgs e)
@@ -42,15 +43,26 @@ namespace StudSearch
                 lbStudents.Items.Add("***No Students Records Found***");
             }
 
-            ClearAll();
+            ClearAllLabels();
 
         }
 
         void lbStudents_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            CoursesClear();
+            ClearAllLabels();
+            string selection;
 
-            string selection = lbStudents.SelectedItem.ToString();
+            //Workaround for a crash that occured when the ctrl key was being held while selecting a student.
+            try
+            {
+                selection = lbStudents.SelectedItem.ToString();
+            }
+            catch(NullReferenceException)
+            {
+                lbCourses.Items.Clear();
+                return;
+            }
+
             string[] substrings = selection.Split(' ');
             string ID = substrings[3];
             Student student = Student.GetStudentById(ID);
@@ -78,7 +90,18 @@ namespace StudSearch
 
         private void lbCourses_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            string selection = lbCourses.SelectedItem.ToString();
+            string selection;
+
+            //Workaround for a crash that occured when the ctrl key was being held while selecting a course.
+            try
+            {
+                selection = lbCourses.SelectedItem.ToString();
+            }
+            catch (NullReferenceException)
+            {
+                return;
+            }
+               
             string studentID = lblID.Content.ToString();
             Student student = Student.GetStudentById(studentID);
             List<EnrolledCourse> courses = student.courses;
@@ -182,7 +205,7 @@ namespace StudSearch
 
         }
 
-        public void ClearAll()
+        public void ClearAllLabels()
         {
             lblCompleted.Content = "";
             lblCore.Content = "";
@@ -200,16 +223,6 @@ namespace StudSearch
             lblSemster.Content = "";
             lblYear.Content = "";
         }
-        public void CoursesClear()
-        {
-            lblCourseId.Content = "";
-            lblCourseNam.Content = "";
-            lblCourseNum.Content = "";
-            lblCourseCred.Content = "";
-            lblSemster.Content = "";
-            lblYear.Content = "";
-            lblCourseType.Content = "";
-            lblCourseGrade.Content = "";
-        }
+
     }
 }
