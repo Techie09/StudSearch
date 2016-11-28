@@ -1,0 +1,58 @@
+﻿<UserControl
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:StudSearch.Views"
+             xmlns:syncfusion="http://schemas.syncfusion.com/wpf" x:Class="StudSearch.Views.CtrlStudentOverview"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300" Width="650" Height="400">
+    <Grid Background="#FF81A5D1">
+        <DataGrid x:Name="grdStudents" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="380" Width="285">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding firstName}" Header="First Name" IsReadOnly="True" Width="3*"/>
+                <DataGridTextColumn Binding="{Binding lastName}" Header="Last Name" IsReadOnly="True" Width="3*"/>
+                <DataGridTextColumn Binding="{Binding id}" Header="ID" IsReadOnly="True" Width="2*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <syncfusion:SfBulletGraph x:Name="bulletCorePercent" HorizontalAlignment="Right" Margin="0,10,10,0" VerticalAlignment="Top" Height="414" Width="400" TabIndex="2147483643" MajorTickSize="10" MinorTickSize="1" MinorTicksPerInterval="5" Cursor="None" Focusable="False" IsEnabled="False" IsTabStop="False" ScrollViewer.VerticalScrollBarVisibility="Disabled" Padding="0" BorderThickness="0,5,15,0" IsHitTestVisible="False" RenderTransformOrigin="0,0" ShowToolTip="False" TickPosition="Above" LabelPosition="Above">
+            <syncfusion:SfBulletGraph.Caption>
+                <StackPanel>
+                    <TextBlock FontSize="14" HorizontalAlignment="Center" Foreground="Black" Margin="2">Core %</TextBlock>
+                    <TextBlock FontSize="14" HorizontalAlignment="Center" Foreground="Black" Margin="2">Completed</TextBlock>
+                </StackPanel>
+            </syncfusion:SfBulletGraph.Caption>
+            <syncfusion:SfBulletGraph.QualitativeRanges>
+                <syncfusion:QualitativeRange RangeEnd="100" RangeStroke="#B6C8DE"></syncfusion:QualitativeRange>
+                <syncfusion:QualitativeRange RangeEnd="75" RangeStroke="#ADBFD5"></syncfusion:QualitativeRange>
+                <syncfusion:QualitativeRange RangeEnd="50" RangeStroke="#8092A8"></syncfusion:QualitativeRange>
+            </syncfusion:SfBulletGraph.QualitativeRanges>
+        </syncfusion:SfBulletGraph>
+        <syncfusion:SfBulletGraph x:Name="bulletGenEdPercent" HorizontalAlignment="Right" Margin="0,74,10,-88" VerticalAlignment="Top" Height="414" Width="400" TabIndex="2147483643" MajorTickSize="10" MinorTickSize="1" MinorTicksPerInterval="5" Cursor="None" Focusable="False" IsEnabled="False" IsTabStop="False" ScrollViewer.VerticalScrollBarVisibility="Disabled" Padding="0" BorderThickness="0,5,15,0" IsHitTestVisible="False" RenderTransformOrigin="0,0" ShowToolTip="False" TickPosition="Above" LabelPosition="Above">
+            <syncfusion:SfBulletGraph.Caption>
+                <StackPanel>
+                    <TextBlock FontSize="14" HorizontalAlignment="Center" Foreground="Black" Margin="2"><Run Text="Gen Ed %"/></TextBlock>
+                    <TextBlock FontSize="14" HorizontalAlignment="Center" Foreground="Black" Margin="2"><Run Text="Completed"/></TextBlock>
+                </StackPanel>
+            </syncfusion:SfBulletGraph.Caption>
+            <syncfusion:SfBulletGraph.QualitativeRanges>
+                <syncfusion:QualitativeRange RangeEnd="100" RangeStroke="#B6C8DE"/>
+                <syncfusion:QualitativeRange RangeEnd="75" RangeStroke="#ADBFD5"/>
+                <syncfusion:QualitativeRange RangeEnd="50" RangeStroke="#8092A8"/>
+            </syncfusion:SfBulletGraph.QualitativeRanges>
+        </syncfusion:SfBulletGraph>
+        <syncfusion:SfBulletGraph x:Name="bulletElectivePercent" HorizontalAlignment="Right" Margin="0,142,10,-156" VerticalAlignment="Top" Height="414" Width="400" TabIndex="2147483643" MajorTickSize="10" MinorTickSize="1" MinorTicksPerInterval="5" Cursor="None" Focusable="False" IsEnabled="False" IsTabStop="False" ScrollViewer.VerticalScrollBarVisibility="Disabled" Padding="0" BorderThickness="0,5,15,0" IsHitTestVisible="False" RenderTransformOrigin="0,0" ShowToolTip="False" TickPosition="Above" LabelPosition="Above">
+            <syncfusion:SfBulletGraph.Caption>
+                <StackPanel>
+                    <TextBlock FontSize="14" HorizontalAlignment="Center" Foreground="Black" Margin="2"><Run Text="Elective %"/></TextBlock>
+                    <TextBlock FontSize="14" HorizontalAlignment="Center" Foreground="Black" Margin="2"><Run Text="Completed"/></TextBlock>
+                </StackPanel>
+            </syncfusion:SfBulletGraph.Caption>
+            <syncfusion:SfBulletGraph.QualitativeRanges>
+                <syncfusion:QualitativeRange RangeEnd="100" RangeStroke="#B6C8DE"/>
+                <syncfusion:QualitativeRange RangeEnd="75" RangeStroke="#ADBFD5"/>
+                <syncfusion:QualitativeRange RangeEnd="50" RangeStroke="#8092A8"/>
+            </syncfusion:SfBulletGraph.QualitativeRanges>
+        </syncfusion:SfBulletGraph>
+    </Grid>
+</UserControl>
