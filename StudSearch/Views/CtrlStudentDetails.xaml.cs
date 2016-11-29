@@ -46,6 +46,30 @@ namespace StudSearch.Views
 
         }
 
+        public void PopulateStudentInfo(Student student)
+        {
+            if (student == null)
+            {
+                return;
+            }
+
+            lblFname.Content = student.firstName;
+            lblLname.Content = student.lastName;
+            lblID.Content = student.id;
+
+            lbCourses.Items.Clear(); //Clear the course list box each time a student is selected
+
+
+            List<EnrolledCourse> courses = student.courses;
+            ComputeCompletion(courses); //Computes and sets completion % for each course type
+
+            foreach (EnrolledCourse course in courses)
+            {
+                Course c = new Course(ObjectCache.CourseRootList.FirstOrDefault(cs => cs.CourseID == course.courseID));
+                lbCourses.Items.Add(c.name);
+            }
+        }
+
         void lbStudents_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             ClearAllLabels();
@@ -70,21 +94,8 @@ namespace StudSearch.Views
                 return;
             }
 
-            lblFname.Content = student.firstName;
-            lblLname.Content = student.lastName;
-            lblID.Content = student.id;
+            PopulateStudentInfo(student);
 
-            lbCourses.Items.Clear(); //Clear the course list box each time a student is selected
-
-
-            List<EnrolledCourse> courses = student.courses;
-            ComputeCompletion(courses); //Computes and sets completion % for each course type
-
-            foreach (EnrolledCourse course in courses)
-            {
-                Course c = new Course(ObjectCache.CourseRootList.FirstOrDefault(cs => cs.CourseID == course.courseID));
-                lbCourses.Items.Add(c.name);
-            }
         }
 
         private void lbCourses_MouseDoubleClick(object sender, MouseButtonEventArgs e)
@@ -124,86 +135,34 @@ namespace StudSearch.Views
 
         public void ComputeCompletion(List<EnrolledCourse> courses)
         {
-            double coreCompletion = 0;
-            double electiveCompletion = 0;
-            double genEdCompletion = 0;
-            double totCompletion = 0;
 
-            var electives = from course in courses
-                            where course.info.courseType == "Elective"
-                            select course;
-            foreach (EnrolledCourse course in electives)
-            {
-                switch (course.grade)
-                {
-                    case LetterGrade.A:
-                        electiveCompletion++;
-                        break;
-                    case LetterGrade.B:
-                        electiveCompletion++;
-                        break;
-                    case LetterGrade.C:
-                        electiveCompletion++;
-                        break;
-                    default:
-                        break;
-                }
-            }
+            var coursesCompleted = from course in courses
+                                     where course.grade == LetterGrade.A
+                                     || course.grade == LetterGrade.B
+                                     || course.grade == LetterGrade.C
+                                     select course;
 
-            var core = from course in courses
-                       where course.info.courseType == "Core"
-                       select course;
+            var electivesCompleted = from course in coursesCompleted
+                                     where course.info.courseType.Equals(CourseTypes.ELECTIVE.ToString(), StringComparison.OrdinalIgnoreCase)
+                                     select course;
 
-            foreach (EnrolledCourse course in core)
-            {
-                switch (course.grade)
-                {
-                    case LetterGrade.A:
-                        coreCompletion++;
-                        break;
-                    case LetterGrade.B:
-                        coreCompletion++;
-                        break;
-                    case LetterGrade.C:
-                        coreCompletion++;
-                        break;
-                    default:
-                        break;
-                }
-            }
+            var coreCompleted = from course in coursesCompleted
+                                where course.info.courseType.Equals(CourseTypes.CORE.ToString(), StringComparison.OrdinalIgnoreCase)
+                                select course;
 
-            var genEd = from course in courses
-                        where course.info.courseType == "General"
-                        select course;
-
-            foreach (EnrolledCourse course in genEd)
-            {
-                switch (course.grade)
-                {
-                    case LetterGrade.A:
-                        genEdCompletion++;
-                        break;
-                    case LetterGrade.B:
-                        genEdCompletion++;
-                        break;
-                    case LetterGrade.C:
-                        genEdCompletion++;
-                        break;
-                    default:
-                        break;
-                }
-            }
-
-            totCompletion = electiveCompletion + coreCompletion + genEdCompletion;
+            var genEdCompleted = from course in coursesCompleted
+                                 where course.info.courseType.Equals(CourseTypes.GEN_ED.ToString(), StringComparison.OrdinalIgnoreCase)
+                                 select course;
 
             // Calcuates and rounds the % completion of each type to the nearest hundreth and sets it to the label
-            lblElective.Content = Math.Round(((electiveCompletion / 8) * 100), 2);
-            lblCore.Content = Math.Round(((coreCompletion / 26) * 100), 2);
-            lblGenEd.Content = Math.Round(((genEdCompletion / 8) * 100), 2);
+            lblElective.Content = Math.Round(((electivesCompleted.ToList().Count / 8f) * 100), 2);
+            lblCore.Content = Math.Round(((coreCompleted.ToList().Count / 26f) * 100), 2);
+            lblGenEd.Content = Math.Round(((genEdCompleted.ToList().Count / 8f) * 100), 2);
 
-            lblCompleted.Content = Math.Round(((totCompletion / 42) * 100), 2);
+            lblCompleted.Content = Math.Round(((coursesCompleted.ToList().Count / 42f) * 100), 2);
 
         }
+
 
         public void ClearAllLabels()
         {
