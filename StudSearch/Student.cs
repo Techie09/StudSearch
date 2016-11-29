@@ -12,7 +12,8 @@ namespace StudSearch
         /// <summary>
         /// represents the <see cref="string"/> "ID"
         /// </summary>
-        public static string ID = "ID";
+        
+        //public static string ID = "ID";
         private string m_id;
         /// <summary>
         ///  a <see cref="string"/> representing the unique student identification
@@ -26,7 +27,7 @@ namespace StudSearch
         /// <summary>
         /// represents the <see cref="string"/> "First Name"
         /// </summary>
-        public static string FirstName = "First Name";
+        //public static string FirstName = "First Name";
         private string m_firstName;
         /// <summary>
         /// a <see cref="string"/> representing the student's first name
@@ -40,7 +41,7 @@ namespace StudSearch
         /// <summary>
         /// represents the <see cref="string"/> "Last Name"
         /// </summary>
-        public static string LastName = "Last Name";
+        //public static string LastName = "Last Name";
         private string m_lastName;
         /// <summary>
         /// a <see cref="string"/> representing the student's last name 
@@ -54,7 +55,7 @@ namespace StudSearch
         /// <summary>
         /// represents the <see cref="string"/> "Courses"
         /// </summary>
-        public static string Courses = "Courses";
+        //public static string Courses = "Courses";
         private List<EnrolledCourse> m_courses;
         /// <summary>
         /// represents a <see cref="List{T}"/> of <see cref="Course"/> the student has taken

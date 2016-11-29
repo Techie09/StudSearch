@@ -24,5 +24,17 @@ namespace StudSearch.Views
         {
             InitializeComponent();
         }
+
+        private void grdStudents_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Student student = (grdStudents.CurrentItem as Student);
+            CompletionPercentage studentCompletion = CompletionProgress.ComputeCompletion(student.courses);
+
+            bulletCorePercent.FeaturedMeasure = studentCompletion.Core;
+
+            bulletElectivePercent.FeaturedMeasure = studentCompletion.Elective;
+
+            bulletGenEdPercent.FeaturedMeasure = studentCompletion.GenEd;
+        }
     }
 }

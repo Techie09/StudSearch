@@ -27,7 +27,7 @@ namespace StudSearch
                                 select course;
 
             var genEdCompleted = from course in coursesCompleted
-                                 where course.info.courseType.Equals(CourseTypes.GEN_ED.ToString(), StringComparison.OrdinalIgnoreCase)
+                                 where course.info.courseType.Contains(CourseTypes.GEN_ED.ToString())
                                  select course;
 
 
