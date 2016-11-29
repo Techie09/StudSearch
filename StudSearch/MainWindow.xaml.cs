@@ -23,10 +23,24 @@ namespace StudSearch
     public partial class MainWindow : Window
     {
         Student student;
+        CompletionPercentage avgPercentage;
+        List<Student> allStudents;
+        List<CompletionPercentage> allPercentages = new List<CompletionPercentage>();
 
         public MainWindow()
         {
-            InitializeComponent();            
+            InitializeComponent();
+            allStudents = Students.SearchStudentsGeneral("");
+
+            foreach (Student student in allStudents)
+            {
+                if (student.courses == null)
+                    continue;
+                allPercentages.Add(CompletionProgress.ComputeCompletion(student.courses));
+            }
+
+            avgPercentage = CompletionProgress.AveragePercentage(allPercentages);
+    
         }
 
         private void tabStudentDetails_GotFocus(object sender, RoutedEventArgs e)
@@ -54,13 +68,17 @@ namespace StudSearch
             }
             else
             {
+                ctrlStudentOverview.grdStudents.ItemsSource = Students.SearchStudentsGeneral("");
                 CompletionPercentage studentCompletion = CompletionProgress.ComputeCompletion(student.courses);
 
                 ctrlStudentOverview.bulletCorePercent.FeaturedMeasure = studentCompletion.Core;
+                ctrlStudentOverview.bulletCorePercent.ComparativeMeasure = avgPercentage.Core;
 
                 ctrlStudentOverview.bulletElectivePercent.FeaturedMeasure = studentCompletion.Elective;
+                ctrlStudentOverview.bulletElectivePercent.ComparativeMeasure = avgPercentage.Elective;
 
                 ctrlStudentOverview.bulletGenEdPercent.FeaturedMeasure = studentCompletion.GenEd;
+                ctrlStudentOverview.bulletGenEdPercent.ComparativeMeasure = avgPercentage.GenEd;
             }
         }
 

@@ -38,32 +38,59 @@ namespace StudSearch
 
             return completionPercentage;
         }
+
+        public static CompletionPercentage AveragePercentage(List<CompletionPercentage> percentages)
+        {
+            double electiveTotal = 0;
+            double coreTotal = 0;
+            double genEdTotal = 0;
+            double totalTotal = 0;
+
+            foreach (CompletionPercentage percentage in percentages)
+            {
+                
+                electiveTotal += percentage.Elective;
+                coreTotal += percentage.Core;
+                genEdTotal += percentage.GenEd;
+                totalTotal += percentage.Total;                                          
+                             
+            }
+
+            CompletionPercentage average = new CompletionPercentage();
+
+            average.Total = Math.Round(totalTotal / percentages.Count, 2);
+            average.Elective = Math.Round(electiveTotal / percentages.Count, 2);
+            average.GenEd = Math.Round(genEdTotal / percentages.Count, 2);
+            average.Core = Math.Round(coreTotal / percentages.Count, 2);
+
+            return average;
+        }
     }
 
     public class CompletionPercentage
     {
-        double core;
+        double core = 0;
         public double Core
         {
             get { return core; }
             set { core = value; }
         }
 
-        double elective;
+        double elective = 0;
         public double Elective
         {
             get { return elective; }
             set { elective = value; }
         }
 
-        double genEd;
+        double genEd = 0;
         public double GenEd
         {
             get { return genEd; }
             set { genEd = value; }
         }
 
-        double total;
+        double total = 0;
         public double Total
         {
             get { return total; }
