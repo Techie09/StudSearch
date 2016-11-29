@@ -61,7 +61,7 @@ namespace StudSearch.Views
 
 
             List<EnrolledCourse> courses = student.courses;
-            CompletionPercentage completionPercentage = CompletionProgress.ComputeCompletion(courses);//Computes and sets completion % for each course type
+            CompletionPercentage completionPercentage = CompletionProgress.ComputeCompletion(courses); //Computes and sets completion % for each course type
 
             lblCompleted.Content = completionPercentage.Total;
             lblGenEd.Content = completionPercentage.GenEd;

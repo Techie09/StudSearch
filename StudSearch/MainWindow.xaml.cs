@@ -54,11 +54,13 @@ namespace StudSearch
             }
             else
             {
-                ctrlStudentOverview.bulletCorePercent.FeaturedMeasure = CompletionProgress.ComputeCompletion(student.courses).Core;
+                CompletionPercentage studentCompletion = CompletionProgress.ComputeCompletion(student.courses);
 
-                ctrlStudentOverview.bulletElectivePercent.FeaturedMeasure = CompletionProgress.ComputeCompletion(student.courses).Elective;
+                ctrlStudentOverview.bulletCorePercent.FeaturedMeasure = studentCompletion.Core;
 
-                ctrlStudentOverview.bulletGenEdPercent.FeaturedMeasure = CompletionProgress.ComputeCompletion(student.courses).GenEd;
+                ctrlStudentOverview.bulletElectivePercent.FeaturedMeasure = studentCompletion.Elective;
+
+                ctrlStudentOverview.bulletGenEdPercent.FeaturedMeasure = studentCompletion.GenEd;
             }
         }
 
