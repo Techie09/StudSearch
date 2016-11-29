@@ -93,6 +93,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="CompletionProgress.cs" />
     <Compile Include="CourseArgs.cs" />
     <Compile Include="EnrolledCourseArgs.cs" />
     <Compile Include="ObjectCache.cs" />

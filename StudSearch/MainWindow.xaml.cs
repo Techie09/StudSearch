@@ -52,6 +52,14 @@ namespace StudSearch
                 ctrlStudentOverview.bulletGenEdPercent.FeaturedMeasure = 0;
                 ctrlStudentOverview.bulletGenEdPercent.FeaturedMeasure = 0;
             }
+            else
+            {
+                ctrlStudentOverview.bulletCorePercent.FeaturedMeasure = CompletionProgress.ComputeCompletion(student.courses).Core;
+
+                ctrlStudentOverview.bulletElectivePercent.FeaturedMeasure = CompletionProgress.ComputeCompletion(student.courses).Elective;
+
+                ctrlStudentOverview.bulletGenEdPercent.FeaturedMeasure = CompletionProgress.ComputeCompletion(student.courses).GenEd;
+            }
         }
 
         private void tabStudentDetails_LostFocus(object sender, RoutedEventArgs e)

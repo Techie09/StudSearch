@@ -61,7 +61,12 @@ namespace StudSearch.Views
 
 
             List<EnrolledCourse> courses = student.courses;
-            ComputeCompletion(courses); //Computes and sets completion % for each course type
+            CompletionPercentage completionPercentage = CompletionProgress.ComputeCompletion(courses);//Computes and sets completion % for each course type
+
+            lblCompleted.Content = completionPercentage.Total;
+            lblGenEd.Content = completionPercentage.GenEd;
+            lblElective.Content = completionPercentage.Elective;
+            lblCore.Content = completionPercentage.Core;
 
             foreach (EnrolledCourse course in courses)
             {
@@ -133,35 +138,7 @@ namespace StudSearch.Views
 
         }
 
-        public void ComputeCompletion(List<EnrolledCourse> courses)
-        {
 
-            var coursesCompleted = from course in courses
-                                     where course.grade == LetterGrade.A
-                                     || course.grade == LetterGrade.B
-                                     || course.grade == LetterGrade.C
-                                     select course;
-
-            var electivesCompleted = from course in coursesCompleted
-                                     where course.info.courseType.Equals(CourseTypes.ELECTIVE.ToString(), StringComparison.OrdinalIgnoreCase)
-                                     select course;
-
-            var coreCompleted = from course in coursesCompleted
-                                where course.info.courseType.Equals(CourseTypes.CORE.ToString(), StringComparison.OrdinalIgnoreCase)
-                                select course;
-
-            var genEdCompleted = from course in coursesCompleted
-                                 where course.info.courseType.Equals(CourseTypes.GEN_ED.ToString(), StringComparison.OrdinalIgnoreCase)
-                                 select course;
-
-            // Calcuates and rounds the % completion of each type to the nearest hundreth and sets it to the label
-            lblElective.Content = Math.Round(((electivesCompleted.ToList().Count / 8f) * 100), 2);
-            lblCore.Content = Math.Round(((coreCompleted.ToList().Count / 26f) * 100), 2);
-            lblGenEd.Content = Math.Round(((genEdCompleted.ToList().Count / 8f) * 100), 2);
-
-            lblCompleted.Content = Math.Round(((coursesCompleted.ToList().Count / 42f) * 100), 2);
-
-        }
 
 
         public void ClearAllLabels()
