@@ -41,27 +41,21 @@ namespace StudSearch
 
         public static CompletionPercentage AveragePercentage(List<CompletionPercentage> percentages)
         {
-            double electiveTotal = 0;
-            double coreTotal = 0;
-            double genEdTotal = 0;
-            double totalTotal = 0;
+            CompletionPercentage average = new CompletionPercentage();
 
             foreach (CompletionPercentage percentage in percentages)
             {
-                
-                electiveTotal += percentage.Elective;
-                coreTotal += percentage.Core;
-                genEdTotal += percentage.GenEd;
-                totalTotal += percentage.Total;                                          
-                             
-            }
 
-            CompletionPercentage average = new CompletionPercentage();
+                average.Elective += percentage.Elective;
+                average.Core += percentage.Core;
+                average.GenEd += percentage.GenEd;
+                average.Total += percentage.Total;
+            }            
 
-            average.Total = Math.Round(totalTotal / percentages.Count, 2);
-            average.Elective = Math.Round(electiveTotal / percentages.Count, 2);
-            average.GenEd = Math.Round(genEdTotal / percentages.Count, 2);
-            average.Core = Math.Round(coreTotal / percentages.Count, 2);
+            average.Total = Math.Round(average.Total / percentages.Count, 2);
+            average.Elective = Math.Round(average.Elective / percentages.Count, 2);
+            average.GenEd = Math.Round(average.GenEd / percentages.Count, 2);
+            average.Core = Math.Round(average.Core / percentages.Count, 2);
 
             return average;
         }
@@ -95,6 +89,21 @@ namespace StudSearch
         {
             get { return total; }
             set { total = value; }
+        }
+        public CompletionPercentage()
+        {
+            this.core = 0;
+            this.elective = 0;
+            this.genEd = 0;
+            this.total = 0;
+        }
+
+        public CompletionPercentage(double core, double elective, double genEd, double total)
+        {
+            this.core = core;
+            this.elective = elective;
+            this.genEd = genEd;
+            this.total = total;
         }
     }
 }

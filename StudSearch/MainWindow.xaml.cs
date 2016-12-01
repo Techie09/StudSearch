@@ -59,25 +59,38 @@ namespace StudSearch
             //If student is not null, set student, and load values
             if (student == null)
             {
-                ctrlStudentOverview.bulletCorePercent.FeaturedMeasure = 0;
-                ctrlStudentOverview.bulletElectivePercent.FeaturedMeasure = 0;
-                ctrlStudentOverview.bulletGenEdPercent.FeaturedMeasure = 0;
+                CompletionPercentage cp = new CompletionPercentage();
+                ctrlStudentOverview.SetBulletFeaturedMeasures(cp);
             }
             else
             {
-                if(ctrlStudentOverview.grdStudents.ItemsSource == null)
-                    ctrlStudentOverview.grdStudents.ItemsSource = Students.SearchStudentsGeneral("");
+                DataGrid grdStudents = ctrlStudentOverview.grdStudents;
+                if (grdStudents.ItemsSource == null)
+                {
+                    grdStudents.ItemsSource = Students.SearchStudentsGeneral("");
+                }
+                
+                if(grdStudents.ItemsSource != null)
+                {
+                    foreach(Student s in grdStudents.Items)
+                    {
+                        if (s.id == student.id)
+                        {
+                            var i = grdStudents.Items.IndexOf(s); ;
+                            DataGridRow row = (DataGridRow)grdStudents.ItemContainerGenerator.ContainerFromIndex(i);
+                            object item = grdStudents.Items[i];
+                            grdStudents.SelectedItem = item;
+                            grdStudents.ScrollIntoView(item);
+                            row.MoveFocus(new TraversalRequest(FocusNavigationDirection.Next));
+                            break;
+                        }
+                    }
+                }
+
 
                 CompletionPercentage studentCompletion = CompletionProgress.ComputeCompletion(student.courses);
-
-                ctrlStudentOverview.bulletCorePercent.FeaturedMeasure = studentCompletion.Core;
-                ctrlStudentOverview.bulletCorePercent.ComparativeMeasure = avgPercentage.Core;
-
-                ctrlStudentOverview.bulletElectivePercent.FeaturedMeasure = studentCompletion.Elective;
-                ctrlStudentOverview.bulletElectivePercent.ComparativeMeasure = avgPercentage.Elective;
-
-                ctrlStudentOverview.bulletGenEdPercent.FeaturedMeasure = studentCompletion.GenEd;
-                ctrlStudentOverview.bulletGenEdPercent.ComparativeMeasure = avgPercentage.GenEd;
+                ctrlStudentOverview.SetBulletFeaturedMeasures(studentCompletion);
+                ctrlStudentOverview.SetBulletComparativeMeasures(avgPercentage);
             }
         }     
 

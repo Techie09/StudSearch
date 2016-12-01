@@ -8,7 +8,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300" Width="650" Height="400">
     <Grid Background="#FF81A5D1">
-        <DataGrid x:Name="grdStudents" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="380" Width="285" AutoGenerateColumns="False" SelectionMode="Single" SelectionChanged="grdStudents_SelectionChanged">
+        <DataGrid x:Name="grdStudents" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="380" Width="285" AutoGenerateColumns="False" SelectionChanged="grdStudents_SelectionChanged" SelectionMode="Single" CanUserResizeRows="False">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding firstName}" Header="First Name" IsReadOnly="True" Width="3*"/>
                 <DataGridTextColumn Binding="{Binding lastName}" Header="Last Name" IsReadOnly="True" Width="3*"/>

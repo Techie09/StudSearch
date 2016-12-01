@@ -36,5 +36,19 @@ namespace StudSearch.Views
 
             bulletGenEdPercent.FeaturedMeasure = studentCompletion.GenEd;
         }
+
+        public void SetBulletFeaturedMeasures(CompletionPercentage studentCompletion)
+        {
+            bulletCorePercent.FeaturedMeasure = studentCompletion.Core;
+            bulletElectivePercent.FeaturedMeasure = studentCompletion.Elective;
+            bulletGenEdPercent.FeaturedMeasure = studentCompletion.GenEd;
+        }
+
+        public void SetBulletComparativeMeasures(CompletionPercentage avgCompletion)
+        {
+            bulletCorePercent.ComparativeMeasure = avgCompletion.Core;
+            bulletElectivePercent.ComparativeMeasure = avgCompletion.Elective;
+            bulletGenEdPercent.ComparativeMeasure = avgCompletion.GenEd;
+        }
     }
 }
