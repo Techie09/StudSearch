@@ -49,6 +49,28 @@ namespace StudSearch
             CtrlStudentDetails ctrlStudentDetails = (tab.Content as CtrlStudentDetails);
 
             //If student is not null, set student, and load values
+
+            if (student == null)
+            {
+                return;
+            }
+            else
+            {
+                ListBox lbStudents = ctrlStudentDetails.lbStudents;
+                foreach (string s in lbStudents.Items)
+                {
+                    string[] substrings = s.Split(' ');
+                    string ID = substrings[3];
+                    Student selectedStudent = Student.GetStudentById(ID);
+                    if (selectedStudent.id == student.id)
+                    {
+                        lbStudents.SelectedItem = lbStudents.Items.IndexOf(s);
+                        ctrlStudentDetails.lbCourses.Items.Clear();
+                        ctrlStudentDetails.PopulateStudentInfo(selectedStudent);
+                    }
+
+                }
+            }
         }
 
         private void tabStudentOverview_GotFocus(object sender, RoutedEventArgs e)
@@ -76,12 +98,18 @@ namespace StudSearch
                     {
                         if (s.id == student.id)
                         {
-                            var i = grdStudents.Items.IndexOf(s); ;
+                            var i = grdStudents.Items.IndexOf(s); 
                             DataGridRow row = (DataGridRow)grdStudents.ItemContainerGenerator.ContainerFromIndex(i);
+                            if (row == null)
+                            {
+                                return;
+                            }
                             object item = grdStudents.Items[i];
                             grdStudents.SelectedItem = item;
                             grdStudents.ScrollIntoView(item);
+                                                                                   
                             row.MoveFocus(new TraversalRequest(FocusNavigationDirection.Next));
+                            
                             break;
                         }
                     }
@@ -140,6 +168,11 @@ namespace StudSearch
         }
 
         private void tabCtrlManager_SelectedIndexChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+
+        }
+
+        private void CtrlStudentDetails_Loaded(object sender, RoutedEventArgs e)
         {
 
         }

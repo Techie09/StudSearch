@@ -10,7 +10,7 @@
         Title="StudSearch" Height="476.552" Width="700.943">
     <syncfusion:TabControlExt x:Name="tabCtrlManager" HorizontalAlignment="Left" VerticalAlignment="Top" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch" Height="446" Width="691" SelectionChanged="tabCtrlManager_SelectionChanged" SelectedIndexChanged="tabCtrlManager_SelectedIndexChanged">
         <syncfusion:TabItemExt x:Name="tabStudentDetails" Header="Student Details" GotFocus="tabStudentDetails_GotFocus">
-            <myViews:CtrlStudentDetails/>
+            <myViews:CtrlStudentDetails Loaded="CtrlStudentDetails_Loaded"/>
         </syncfusion:TabItemExt>
         <syncfusion:TabItemExt x:Name="tabStudentOverview" Header="Student Overview" GotFocus="tabStudentOverview_GotFocus">
             <myViews:CtrlStudentOverview/>

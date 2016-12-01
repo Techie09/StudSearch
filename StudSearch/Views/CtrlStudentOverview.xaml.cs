@@ -28,6 +28,10 @@ namespace StudSearch.Views
         private void grdStudents_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             Student student = (grdStudents.CurrentItem as Student);
+
+            if (student == null)
+                return;
+
             CompletionPercentage studentCompletion = CompletionProgress.ComputeCompletion(student.courses);
 
             bulletCorePercent.FeaturedMeasure = studentCompletion.Core;

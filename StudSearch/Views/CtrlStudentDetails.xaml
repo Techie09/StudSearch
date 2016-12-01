@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:StudSearch.Views"
              mc:Ignorable="d" Height="400" Width="650">
     <Grid RenderTransformOrigin="0.989,0.02" Background="#FF81A5D1">
-        <TextBox x:Name="tbSearch" HorizontalAlignment="Left" Height="23" Margin="14,25,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="tbSearch" HorizontalAlignment="Left" Height="23" Margin="14,25,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" KeyDown="tbSearch_KeyDown"/>
         <Button x:Name="btnConfirm" Content="Search" HorizontalAlignment="Left" Margin="139,25,0,0" VerticalAlignment="Top" Width="46" Height="23" RenderTransformOrigin="1,2.056" Click="btnConfirm_Click"/>
         <ListBox x:Name="lbStudents" HorizontalAlignment="Left" Height="112" Margin="316,49,0,0" VerticalAlignment="Top" Width="327" SelectionMode="Single" MouseDoubleClick="lbStudents_MouseDoubleClick"/>
         <Label x:Name="lblFname" Content="First" HorizontalAlignment="Left" Margin="78,91,0,0" VerticalAlignment="Top" Width="110" Height="24" FontSize="11"/>

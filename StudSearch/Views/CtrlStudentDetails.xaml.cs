@@ -159,5 +159,13 @@ namespace StudSearch.Views
             lblSemster.Content = "";
             lblYear.Content = "";
         }
+
+        private void tbSearch_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                btnConfirm_Click(sender, e);
+            }
+        }
     }
 }
