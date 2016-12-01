@@ -24,7 +24,7 @@ namespace StudSearch
     {
         Student student;
         CompletionPercentage avgPercentage;
-        List<Student> allStudents;
+        List<Student> allStudents = new List<Student>();
         List<CompletionPercentage> allPercentages = new List<CompletionPercentage>();
 
         public MainWindow()
