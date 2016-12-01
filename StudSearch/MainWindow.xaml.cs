@@ -59,88 +59,53 @@ namespace StudSearch
             //If student is not null, set student, and load values
             if (student == null)
             {
-                ctrlStudentOverview.bulletCorePercent.FeaturedMeasure = 0;
-                ctrlStudentOverview.bulletCorePercent.ComparativeMeasure = 0;
-                ctrlStudentOverview.bulletElectivePercent.FeaturedMeasure = 0;
-                ctrlStudentOverview.bulletElectivePercent.ComparativeMeasure = 0;
-                ctrlStudentOverview.bulletGenEdPercent.FeaturedMeasure = 0;
-                ctrlStudentOverview.bulletGenEdPercent.FeaturedMeasure = 0;
+                CompletionPercentage cp = new CompletionPercentage();
+                ctrlStudentOverview.SetBulletFeaturedMeasures(cp);
             }
             else
             {
-                ctrlStudentOverview.grdStudents.ItemsSource = Students.SearchStudentsGeneral("");
+                DataGrid grdStudents = ctrlStudentOverview.grdStudents;
+                if (grdStudents.ItemsSource == null)
+                {
+                    grdStudents.ItemsSource = Students.SearchStudentsGeneral("");
+                }
+                
+                if(grdStudents.ItemsSource != null)
+                {
+                    foreach(Student s in grdStudents.Items)
+                    {
+                        if (s.id == student.id)
+                        {
+                            var i = grdStudents.Items.IndexOf(s); ;
+                            DataGridRow row = (DataGridRow)grdStudents.ItemContainerGenerator.ContainerFromIndex(i);
+                            object item = grdStudents.Items[i];
+                            grdStudents.SelectedItem = item;
+                            grdStudents.ScrollIntoView(item);
+                            row.MoveFocus(new TraversalRequest(FocusNavigationDirection.Next));
+                            break;
+                        }
+                    }
+                }
+
+
                 CompletionPercentage studentCompletion = CompletionProgress.ComputeCompletion(student.courses);
-
-                ctrlStudentOverview.bulletCorePercent.FeaturedMeasure = studentCompletion.Core;
-                ctrlStudentOverview.bulletCorePercent.ComparativeMeasure = avgPercentage.Core;
-
-                ctrlStudentOverview.bulletElectivePercent.FeaturedMeasure = studentCompletion.Elective;
-                ctrlStudentOverview.bulletElectivePercent.ComparativeMeasure = avgPercentage.Elective;
-
-                ctrlStudentOverview.bulletGenEdPercent.FeaturedMeasure = studentCompletion.GenEd;
-                ctrlStudentOverview.bulletGenEdPercent.ComparativeMeasure = avgPercentage.GenEd;
+                ctrlStudentOverview.SetBulletFeaturedMeasures(studentCompletion);
+                ctrlStudentOverview.SetBulletComparativeMeasures(avgPercentage);
             }
-        }
-
-        private void tabStudentDetails_LostFocus(object sender, RoutedEventArgs e)
-        {
-            return;
-            var tab = (sender as TabItemExt);
-            CtrlStudentDetails ctrlStudentDetails = (tab.Content as CtrlStudentDetails);
-
-            //set student to focused student, or null if non-selected
-            string selection = ctrlStudentDetails.lbStudents.SelectedItem.ToString();
-            string[] substrings = selection.Split(' ');
-            if (substrings.Length < 3)
-            {
-                student = null;
-                ctrlStudentDetails.tbSearch.Text = String.Empty;
-                ctrlStudentDetails.lbStudents.Items.Clear();
-                ctrlStudentDetails.lbCourses.Items.Clear();
-                ctrlStudentDetails.ClearAllLabels();
-            }
-            else
-            {
-                string ID = substrings[3];
-                student = Student.GetStudentById(ID);
-            }
-        }
-
-        private void tabStudentOverview_LostFocus(object sender, RoutedEventArgs e)
-        {
-            return;
-            var tab = (sender as TabItemExt);
-            CtrlStudentOverview ctrlStudentOverview = (tab.Content as CtrlStudentOverview);
-
-            //set student to focused student, or null if non-selected
-            if (ctrlStudentOverview.grdStudents.SelectedItem == null)
-            {
-                student = null;
-                ctrlStudentOverview.bulletCorePercent.FeaturedMeasure = 0;
-                ctrlStudentOverview.bulletCorePercent.ComparativeMeasure = 0;
-                ctrlStudentOverview.bulletElectivePercent.FeaturedMeasure = 0;
-                ctrlStudentOverview.bulletElectivePercent.ComparativeMeasure = 0;
-                ctrlStudentOverview.bulletGenEdPercent.FeaturedMeasure = 0;
-                ctrlStudentOverview.bulletGenEdPercent.FeaturedMeasure = 0;
-            }
-            else
-            {
-                student = (ctrlStudentOverview.grdStudents.SelectedItem as Student);
-            }
-        }
+        }     
 
         private void tabCtrlManager_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            TabItemExt selectedItem = ((sender as TabControlExt).SelectedItem as TabItemExt);
+            UserControl selectedItem = ((sender as TabControlExt).SelectedContent as UserControl);
             if (selectedItem == null)
                 return;
 
-            if(selectedItem.Content.GetType() == typeof(CtrlStudentDetails))
+            if(selectedItem.GetType() == typeof(CtrlStudentDetails))
             {
-                CtrlStudentDetails ctrlStudentDetails = (selectedItem.Content as CtrlStudentDetails);
+                CtrlStudentDetails ctrlStudentDetails = (selectedItem as CtrlStudentDetails);
 
                 //set student to focused student, or null if non-selected
-                if (ctrlStudentDetails?.lbStudents?.SelectedItem == null)
+                if (ctrlStudentDetails.lbStudents.SelectedItem == null)
                 {
                     student = null;
                     ctrlStudentDetails.tbSearch.Text = String.Empty;
@@ -150,22 +115,21 @@ namespace StudSearch
                 }
                 else
                 {
-                    student = (ctrlStudentDetails.lbStudents.SelectedItem as Student);
+                    string[] substrings = ctrlStudentDetails.lbStudents.SelectedItem.ToString().Split(' ');
+                    string ID = substrings[3];
+                    student = Student.GetStudentById(ID);
                 }
             }
-            else if(selectedItem.Content.GetType() == typeof(CtrlStudentOverview))
+            else if(selectedItem.GetType() == typeof(CtrlStudentOverview))
             {
-                CtrlStudentOverview ctrlStudentOverview = (selectedItem.Content as CtrlStudentOverview);
+                CtrlStudentOverview ctrlStudentOverview = (selectedItem as CtrlStudentOverview);
 
                 //set student to focused student, or null if non-selected
                 if (ctrlStudentOverview?.grdStudents?.SelectedItem == null)
                 {
                     student = null;
                     ctrlStudentOverview.bulletCorePercent.FeaturedMeasure = 0;
-                    ctrlStudentOverview.bulletCorePercent.ComparativeMeasure = 0;
                     ctrlStudentOverview.bulletElectivePercent.FeaturedMeasure = 0;
-                    ctrlStudentOverview.bulletElectivePercent.ComparativeMeasure = 0;
-                    ctrlStudentOverview.bulletGenEdPercent.FeaturedMeasure = 0;
                     ctrlStudentOverview.bulletGenEdPercent.FeaturedMeasure = 0;
                 }
                 else
@@ -173,6 +137,11 @@ namespace StudSearch
                     student = (ctrlStudentOverview.grdStudents.SelectedItem as Student);
                 }
             }
+        }
+
+        private void tabCtrlManager_SelectedIndexChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+
         }
     }
 }

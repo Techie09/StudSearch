@@ -57,17 +57,45 @@
     </Reference>
     <Reference Include="PresentationFramework.Aero" />
     <Reference Include="ReachFramework" />
-    <Reference Include="Syncfusion.Chart.Base, Version=14.4460.0.15, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
-    <Reference Include="Syncfusion.Gauge.WPF, Version=14.4460.0.15, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
-    <Reference Include="Syncfusion.Grid.WPF, Version=14.4460.0.15, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
-    <Reference Include="Syncfusion.GridCommon.WPF, Version=14.4460.0.15, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
-    <Reference Include="Syncfusion.Linq.Base, Version=14.4460.0.15, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
-    <Reference Include="Syncfusion.SfBulletGraph.WPF, Version=14.4460.0.15, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
-    <Reference Include="Syncfusion.SfGauge.WPF, Version=14.4460.0.15, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
-    <Reference Include="Syncfusion.Shared.Windows, Version=14.4460.0.15, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
-    <Reference Include="Syncfusion.Shared.WPF, Version=14.4460.0.15, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
-    <Reference Include="Syncfusion.Tools.Windows, Version=14.4460.0.15, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
-    <Reference Include="Syncfusion.Tools.WPF, Version=14.4460.0.15, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
+    <Reference Include="Syncfusion.Chart.WPF">
+      <HintPath>..\Syncfusion.Chart.WPF.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Gauge.WPF">
+      <HintPath>..\Syncfusion.Gauge.WPF.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Grid.WPF">
+      <HintPath>..\Syncfusion.Grid.WPF.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.GridCommon.Wpf">
+      <HintPath>..\Syncfusion.GridCommon.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Linq.Base">
+      <HintPath>..\Syncfusion.Linq.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfBulletGraph.WPF">
+      <HintPath>..\Syncfusion.SfBulletGraph.WPF.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfGauge.WPF">
+      <HintPath>..\Syncfusion.SfGauge.WPF.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Shared.Base">
+      <HintPath>..\Syncfusion.Shared.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Shared.Windows">
+      <HintPath>..\Syncfusion.Shared.Windows.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Shared.WPF">
+      <HintPath>..\Syncfusion.Shared.WPF.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SpellChecker.Base">
+      <HintPath>..\Syncfusion.SpellChecker.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Tools.Windows">
+      <HintPath>..\Syncfusion.Tools.Windows.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Tools.WPF">
+      <HintPath>..\Syncfusion.Tools.WPF.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />

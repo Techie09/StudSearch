@@ -207,7 +207,7 @@ namespace StudSearch
         /// <summary>
         /// represents General education type of courses
         /// </summary>
-        [Description("General Education")]
+        [Description("Gen")]
         GEN_ED,
         /// <summary>
         /// represents Elective type of courses
