@@ -45,31 +45,25 @@ namespace StudSearch
 
         private void tabStudentDetails_GotFocus(object sender, RoutedEventArgs e)
         {
+            if ((e.Source as TabItemExt) == null)
+                return;
+
             var tab = (sender as TabItemExt);
             CtrlStudentDetails ctrlStudentDetails = (tab.Content as CtrlStudentDetails);
-
             //If student is not null, set student, and load values
 
             if (student == null)
             {
-                return;
+                ctrlStudentDetails.ClearAllLabels();
+                ctrlStudentDetails.lbStudents.Items.Clear();
+                ctrlStudentDetails.lbCourses.Items.Clear();
             }
             else
             {
                 ListBox lbStudents = ctrlStudentDetails.lbStudents;
-                foreach (string s in lbStudents.Items)
-                {
-                    string[] substrings = s.Split(' ');
-                    string ID = substrings[3];
-                    Student selectedStudent = Student.GetStudentById(ID);
-                    if (selectedStudent.id == student.id)
-                    {
-                        lbStudents.SelectedItem = lbStudents.Items.IndexOf(s);
-                        ctrlStudentDetails.lbCourses.Items.Clear();
-                        ctrlStudentDetails.PopulateStudentInfo(selectedStudent);
-                    }
+                lbStudents.Items.Clear();
 
-                }
+                lbStudents.Items.Add(student);
             }
         }
 
